@@ -37,4 +37,4 @@ Route::get('/supprimerEleve/{eleve}', [EleveController::class,"destroy"]);
 
 Route::get('/ajoutNote/{id}', [NoteController::class,"create"]);
 
-Route::post('/ajouterNote/{eleve}', [NoteController::class,"store"]);
+Route::post('/ajouterNote/{id}', [NoteController::class,"store"]);

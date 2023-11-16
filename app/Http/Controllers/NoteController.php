@@ -19,19 +19,29 @@ class NoteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Eleve $eleve)
+    public function create($id)
     {
-        
-        dd($eleve);
+        $idEleve=$id;
         return view("Notes.ajoutNote",compact("idEleve"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Eleve $eleve)
+    public function store(Request $request, $id)
     {
-        dd($eleve);
+        $request->validate([
+            "matiere"=> "required",
+            "note"=> "required"
+        ]);
+        
+        $note= new Note();
+        $note->matiere=$request->matiere;
+        $note->note=$request->note;
+        $note->eleve_id=$id;
+
+        $note->save();
+       
     }
 
     /**
